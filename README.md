@@ -6,7 +6,7 @@ This project is an attempt to replicate a visually engaging and responsive anima
 
 ## Demo
 
-To see a live demo of the animation, you can visit [Live Demo](#insert_live_demo_url).
+To see a live demo of the animation, you can visit [Live Demo](https://salma247.github.io/apple-pro-animation/).
 
 ## Features
 
