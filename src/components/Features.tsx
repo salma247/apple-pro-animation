@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect, useState } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 import audioAirPod1 from "../assets/audio_airpod1.jpg";
@@ -8,14 +8,6 @@ import noiseReductionVideo from "../assets/noise_reduction.mp4";
 
 export default function Features() {
   const ref = useRef<HTMLDivElement>(null);
-  const [smallScreen, setSmallScreen] = useState(false);
-
-  useLayoutEffect(() => {
-    if (ref.current) {
-      const { width } = ref.current.getBoundingClientRect();
-      setSmallScreen(width < 768);
-    }
-  }, []);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -77,7 +69,7 @@ export default function Features() {
 
   return (
     <motion.section ref={ref} className="h-[500vh] px-4">
-      <div className="sticky top-0 grid h-[100vh] gap-4 sm:grid-rows-4 md:top-[15vh] md:h-[70vh] md:grid-cols-3 md:grid-rows-1">
+      <div className="sticky top-0 grid h-[100vh] grid-rows-4 gap-4 md:top-[15vh] md:h-[70vh] md:grid-cols-3 md:grid-rows-1">
         <div className="md:max-w-80 md:justify-self-end">
           <motion.p
             style={{ opacity: text1Opacity, y: text1Y }}
@@ -106,27 +98,19 @@ export default function Features() {
         </div>
         <motion.figure
           style={{ scale: scale1, opacity: opacity1 }}
-          className="row-span-1 mx-auto flex items-center justify-center sm:row-span-2 sm:w-[60%] md:w-full"
+          className="row-span-2 mx-auto flex w-[60%] items-center justify-center md:row-span-1 md:w-full"
         >
-          <img
-            src={audioAirPod1}
-            alt="Audio AirPod"
-            className={smallScreen ? "object-contain" : "object-cover"}
-          />
+          <img src={audioAirPod1} alt="Audio AirPod" className="object-cover" />
         </motion.figure>
       </div>
 
       {/* Part 2 */}
-      <div className="sticky top-[15vh] grid h-[70vh] items-center gap-4 sm:grid-rows-4 md:grid-cols-3 md:grid-rows-1">
+      <div className="sticky top-[15vh] grid h-[70vh] grid-rows-4 items-center gap-4 md:grid-cols-3 md:grid-rows-1">
         <motion.figure
           style={{ scale: scale2, opacity: opacity2 }}
-          className="order-2 row-span-1 mx-auto flex items-center justify-center sm:row-span-2 sm:w-[60%] md:order-1 md:col-start-2 md:w-full"
+          className="order-2 row-span-2 mx-auto flex w-[60%] items-center justify-center md:order-1 md:col-start-2 md:row-span-1 md:w-full"
         >
-          <img
-            src={audioAirPod2}
-            alt="Audio AirPod"
-            className={smallScreen ? "object-contain" : "object-cover"}
-          />
+          <img src={audioAirPod2} alt="Audio AirPod" className="object-cover" />
         </motion.figure>
         <motion.p
           className="md:max-w-80 order-1 text-sm text-gray-400 md:order-2 md:justify-self-end md:text-[17px]"
@@ -145,14 +129,14 @@ export default function Features() {
       <div className="sticky top-0 h-[100vh] items-center gap-4">
         <motion.figure
           style={{ opacity: videoOpacity }}
-          className="relative flex h-full justify-center"
+          className="relative flex h-full justify-center items-center"
         >
           <video
             src={noiseReductionVideo}
             autoPlay
             muted
             loop
-            className="h-full w-full object-cover"
+            className="md-h-full h-[80%] md:w-full object-cover"
           />
 
           <img
