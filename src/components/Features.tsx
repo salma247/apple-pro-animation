@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import audioAirPod1 from "../assets/audio_airpod1.jpg";
 import audioAirPod2 from "../assets/audio_airpod2.jpg";
 import audioAirPod3 from "../assets/audio_airpod3.png";
+import noiseReduction from "../assets/noise_reduction.jpg";
 import noiseReductionVideo from "../assets/noise_reduction.mp4";
 
 export default function Features() {
@@ -26,7 +27,7 @@ export default function Features() {
   const text1Y = useTransform(
     scrollYProgress,
     [0.15, 0.18, 0.2],
-    ["120", "0%", "-200"],
+    ["120px", "0%", "-200px"],
   );
 
   const text2Opacity = useTransform(
@@ -37,7 +38,7 @@ export default function Features() {
   const text2Y = useTransform(
     scrollYProgress,
     [0.2, 0.25, 0.3],
-    ["0", "0%", "-200"],
+    ["0", "0", "-200px"],
   );
 
   // Part 2
@@ -129,20 +130,27 @@ export default function Features() {
       <div className="sticky top-0 h-[100vh] items-center gap-4">
         <motion.figure
           style={{ opacity: videoOpacity }}
-          className="relative flex h-full justify-center items-center"
+          className="relative flex h-full items-center justify-center"
         >
           <video
             src={noiseReductionVideo}
             autoPlay
             muted
             loop
-            className="md-h-full h-[80%] md:w-full object-cover"
-          />
+            className="h-[80%] object-cover md:h-full md:w-full"
+          >
+            <source src={noiseReductionVideo} type="video/mp4" />
+            <img
+              src={noiseReduction}
+              alt="Noise Reduction"
+              className="h-[80%] object-cover md:h-full md:w-full"
+            />
+          </video>
 
           <img
             src={audioAirPod3}
             alt="Audio AirPod"
-            className="absolute left-[50%] top-[50%] w-[60%] translate-x-[-50%] translate-y-[-50%] transform md:w-[30%]"
+            className="absolute left-[50%] top-[50%] w-[40%] max-w-[200px] translate-x-[-50%] translate-y-[-50%] transform md:max-w-[240px]"
           />
         </motion.figure>
       </div>
